@@ -5,8 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Linea"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        ResizeMode="NoResize"
+        Title="MainWindow" Height="500" Width="500">
+    
+    <Grid x:Name="Container" ShowGridLines="True" Background="SlateGray">
         
     </Grid>
 </Window>

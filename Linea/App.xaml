@@ -4,6 +4,14 @@
              xmlns:local="clr-namespace:Linea"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+         <Style x:Key="RoundButtonTemplate" TargetType="Button">
+             <Setter Property="Template">
+                 <Setter.Value>
+                     <ControlTemplate TargetType="Button">
+                         <Border CornerRadius="45" Background="{TemplateBinding Background}" BorderThickness="1"></Border>
+                     </ControlTemplate>
+                 </Setter.Value>
+             </Setter>
+         </Style>
     </Application.Resources>
 </Application>

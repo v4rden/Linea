@@ -23,6 +23,34 @@ namespace Linea
         public MainWindow()
         {
             InitializeComponent();
+            for (int i = 0; i < 10; i++)
+            {
+                Container.ColumnDefinitions.Add(new ColumnDefinition
+                {
+                    Width = new GridLength(45)
+                });
+                Container.RowDefinitions.Add(new RowDefinition
+                {
+                    Height = new GridLength(45)
+                });
+            }
+
+            for (int i = 0; i < 10; i++)
+            {
+                for (int j = 0; j < 10; j++)
+                {
+                    var button = new Button();
+                    var name = $"b{i}{j}";
+                    button.Content = name;
+                    button.Name = name;
+                    button.Width = Double.NaN;
+                    button.Height = Double.NaN;
+                    button.Style = this.FindResource("RoundButtonTemplate") as Style;
+                    Grid.SetColumn(button, i);
+                    Grid.SetRow(button, j);
+                    Container.Children.Add(button);
+                }
+            }
         }
     }
 }
