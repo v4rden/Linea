@@ -1,6 +1,7 @@
 ﻿namespace UnitTests
 {
     using Akka.Actor;
+    using Akka.TestKit;
     using Akka.TestKit.NUnit3;
     using Linea.ActorModel.Actors;
     using Linea.ActorModel.Messages;
@@ -14,8 +15,7 @@
         [Test]
         public void Clear_GotClearMessage_StateSetToEmpty()
         {
-            var prop = Props.Create(() => new CellActor(1, 1));
-            var cellActor = ActorOfAsTestActorRef<CellActor>(prop);
+            var cellActor = GetCellTestActorRef();
 
             cellActor.Tell(new ClearMessage());
 
@@ -25,8 +25,7 @@
         [Test]
         public void PrepareToSpawn_GotPrepareToSpawnMessage_StateSetToSpawning()
         {
-            var prop = Props.Create(() => new CellActor(1, 1));
-            var cellActor = ActorOfAsTestActorRef<CellActor>(prop);
+            var cellActor = GetCellTestActorRef();
 
             cellActor.Tell(new PrepareToSpawnMessage(BallColor.Blue));
 
@@ -36,8 +35,7 @@
         [Test]
         public void PrepareToSpawn_GotPrepareToSpawnMessage_ColorSetToSentInMessage()
         {
-            var prop = Props.Create(() => new CellActor(1, 1));
-            var cellActor = ActorOfAsTestActorRef<CellActor>(prop);
+            var cellActor = GetCellTestActorRef();
 
             cellActor.Tell(new PrepareToSpawnMessage(BallColor.Blue));
 
@@ -47,12 +45,18 @@
         [Test]
         public void Update_GotTurnPassedMessage_StateSetToOccupied()
         {
-            var prop = Props.Create(() => new CellActor(1, 1));
-            var cellActor = ActorOfAsTestActorRef<CellActor>(prop);
+            var cellActor = GetCellTestActorRef();
 
             cellActor.Tell(new TurnHavePassedMessage());
 
             Assert.AreEqual(CellState.Occupied, cellActor.UnderlyingActor.State);
+        }
+
+        private TestActorRef<CellActor> GetCellTestActorRef()
+        {
+            var prop = Props.Create(() => new CellActor(new CellLocation(1,1)));
+            var cellActor = ActorOfAsTestActorRef<CellActor>(prop);
+            return cellActor;
         }
     }
 }
