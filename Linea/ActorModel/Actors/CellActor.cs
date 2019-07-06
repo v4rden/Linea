@@ -7,15 +7,13 @@ namespace Linea.ActorModel.Actors
 
     public class CellActor : ReceiveActor
     {
-        public int Column { get; }
-        public int Row { get; }
+        public CellLocation Location { get; private set; }
         public CellState State { get; private set; }
         public BallColor Color { get; private set; }
 
-        public CellActor(int column, int row)
+        public CellActor(CellLocation location)
         {
-            Column = column;
-            Row = row;
+            Location = location;
             
             Receive<ClearMessage>(Clear);
             Receive<PrepareToSpawnMessage>(PrepareToSpawn);
