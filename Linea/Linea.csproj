@@ -107,7 +107,9 @@
     <Compile Include="ActorModel\ActorSystemReference.cs" />
     <Compile Include="ActorModel\Actors\CellActor.cs" />
     <Compile Include="ActorModel\Messages\ClearMessage.cs" />
+    <Compile Include="ActorModel\Messages\GameStartedMessage.cs" />
     <Compile Include="ActorModel\Messages\HaveSameNeighbourMessage.cs" />
+    <Compile Include="ActorModel\Messages\IntroductionMessage.cs" />
     <Compile Include="ActorModel\Messages\PrepareToSpawnMessage.cs" />
     <Compile Include="ActorModel\Messages\ReportAnswerMessage.cs" />
     <Compile Include="ActorModel\Messages\ReportRequestMessage.cs" />
