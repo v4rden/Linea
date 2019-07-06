@@ -43,5 +43,16 @@
 
             Assert.AreEqual(BallColor.Blue, cellActor.UnderlyingActor.Color);
         }
+        
+        [Test]
+        public void Update_GotTurnPassedMessage_StateSetToOccupied()
+        {
+            var prop = Props.Create(() => new CellActor(1, 1));
+            var cellActor = ActorOfAsTestActorRef<CellActor>(prop);
+
+            cellActor.Tell(new TurnHavePassedMessage());
+
+            Assert.AreEqual(CellState.Occupied, cellActor.UnderlyingActor.State);
+        }
     }
 }

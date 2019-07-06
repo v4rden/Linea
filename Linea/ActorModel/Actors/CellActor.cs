@@ -19,6 +19,7 @@ namespace Linea.ActorModel.Actors
             
             Receive<ClearMessage>(Clear);
             Receive<PrepareToSpawnMessage>(PrepareToSpawn);
+            Receive<TurnHavePassedMessage>(Update);
         }
 
         private void Clear(ClearMessage message)
@@ -30,6 +31,14 @@ namespace Linea.ActorModel.Actors
         {
             State = CellState.Spawning;
             Color = message.Color;
+        }
+
+        private void Update(TurnHavePassedMessage message)
+        {
+            if (State == CellState.Spawning)
+            {
+                State = CellState.Occupied;
+            }   
         }
     }
 }
