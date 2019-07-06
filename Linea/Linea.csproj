@@ -113,6 +113,8 @@
     <Compile Include="ActorModel\Messages\ReportRequestMessage.cs" />
     <Compile Include="ActorModel\Messages\TurnHavePassedMessage.cs" />
     <Compile Include="Shared\BallColor.cs" />
+    <Compile Include="Shared\CellLocation.cs" />
+    <Compile Include="Shared\CellLocationHelper.cs" />
     <Compile Include="Shared\CellState.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
