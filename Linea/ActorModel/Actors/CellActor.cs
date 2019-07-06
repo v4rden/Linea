@@ -1,6 +1,7 @@
 namespace Linea.ActorModel.Actors
 {
     using Akka.Actor;
+    using Messages;
     using Messges;
     using Shared;
 
@@ -17,11 +18,18 @@ namespace Linea.ActorModel.Actors
             Row = row;
             
             Receive<ClearMessage>(Clear);
+            Receive<PrepareToSpawnMessage>(PrepareToSpawn);
         }
 
         private void Clear(ClearMessage message)
         {
             State = CellState.Empty;
+        }
+
+        private void PrepareToSpawn(PrepareToSpawnMessage message)
+        {
+            State = CellState.Spawning;
+            Color = message.Color;
         }
     }
 }

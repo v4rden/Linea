@@ -1,10 +1,12 @@
 namespace Linea.ActorModel.Messages
 {
+    using Shared;
+
     public class PrepareToSpawnMessage
     {
-        public string Color { get; private set; }
+        public BallColor Color { get; }
 
-        public PrepareToSpawnMessage(string color)
+        public PrepareToSpawnMessage(BallColor color)
         {
             Color = color;
         }
